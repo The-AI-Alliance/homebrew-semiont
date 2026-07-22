@@ -5,21 +5,21 @@
 class Semiont < Formula
   desc "Local Semiont stack launcher — drives Apple container, Docker, or Podman"
   homepage "https://github.com/The-AI-Alliance/semiont"
-  version "0.5.17"
+  version "0.5.18"
   license "Apache-2.0"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/The-AI-Alliance/semiont/releases/download/v0.5.17/semiont_0.5.17_darwin_amd64.tar.gz"
-      sha256 "8d58fd2ab47ec06b661d263356e9d657890887b24c05a2b46684d2a20ce1f5b8"
+      url "https://github.com/The-AI-Alliance/semiont/releases/download/v0.5.18/semiont_0.5.18_darwin_amd64.tar.gz"
+      sha256 "86242868ea27685febd6d2a62698b5681c71d6304064f41bb5811bc739357c1d"
 
       define_method(:install) do
         bin.install "semiont"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/The-AI-Alliance/semiont/releases/download/v0.5.17/semiont_0.5.17_darwin_arm64.tar.gz"
-      sha256 "7535e55c15aa9108ea45d07d68032d6c41ca76105649cee745ce53da8dedede2"
+      url "https://github.com/The-AI-Alliance/semiont/releases/download/v0.5.18/semiont_0.5.18_darwin_arm64.tar.gz"
+      sha256 "f60242c853c5662bad80c09a1d95c739c44f3bbef713228712826caef8fac7f5"
 
       define_method(:install) do
         bin.install "semiont"
@@ -29,15 +29,15 @@ class Semiont < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/The-AI-Alliance/semiont/releases/download/v0.5.17/semiont_0.5.17_linux_amd64.tar.gz"
-      sha256 "b80af104fb7b1073a35af5e08ffb7f3b4ae464802444a5195c8b215556268b9c"
+      url "https://github.com/The-AI-Alliance/semiont/releases/download/v0.5.18/semiont_0.5.18_linux_amd64.tar.gz"
+      sha256 "3dfd8b925ec1a72c9ed5b3e4c5489bf64f6a5c3f1f88f55f35b5852cb686185f"
       define_method(:install) do
         bin.install "semiont"
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/The-AI-Alliance/semiont/releases/download/v0.5.17/semiont_0.5.17_linux_arm64.tar.gz"
-      sha256 "cab7c611fb2dfb63a64e690b471126e71d5ce895e149c2857db5314b04e75a24"
+      url "https://github.com/The-AI-Alliance/semiont/releases/download/v0.5.18/semiont_0.5.18_linux_arm64.tar.gz"
+      sha256 "8c2ca7dc53f71e447fdbe0f71ce1a1126cdcb6d563ce9a10736554a80141c08c"
       define_method(:install) do
         bin.install "semiont"
       end
