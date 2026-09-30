@@ -5,21 +5,21 @@
 class Semiont < Formula
   desc "Local Semiont stack launcher — drives Apple container, Docker, or Podman"
   homepage "https://github.com/The-AI-Alliance/semiont"
-  version "0.6.6"
+  version "0.6.7"
   license "Apache-2.0"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/The-AI-Alliance/semiont/releases/download/v0.6.6/semiont_0.6.6_darwin_amd64.tar.gz"
-      sha256 "ef0e5bdf7ed81911eb5002d30519f80c805c5f7a13848a33759c114be7d241f8"
+      url "https://github.com/The-AI-Alliance/semiont/releases/download/v0.6.7/semiont_0.6.7_darwin_amd64.tar.gz"
+      sha256 "d3657e3161a765dfc0ded01b3755e65c3fb08e88edc9a280edc89508e668fb77"
 
       define_method(:install) do
         bin.install "semiont"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/The-AI-Alliance/semiont/releases/download/v0.6.6/semiont_0.6.6_darwin_arm64.tar.gz"
-      sha256 "a1ce757dedc8a4228a4d0a480a054e90b519545604a377d040a4b15e3f9e124f"
+      url "https://github.com/The-AI-Alliance/semiont/releases/download/v0.6.7/semiont_0.6.7_darwin_arm64.tar.gz"
+      sha256 "015d876ce38b90f701ac026f3d651217d899861d625c3f58f811caef075edd0a"
 
       define_method(:install) do
         bin.install "semiont"
@@ -29,19 +29,33 @@ class Semiont < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/The-AI-Alliance/semiont/releases/download/v0.6.6/semiont_0.6.6_linux_amd64.tar.gz"
-      sha256 "a2cc727e8d16d40a49daffb4c0d6cc7b3ef7df792dd545203d038f9874fffdb2"
+      url "https://github.com/The-AI-Alliance/semiont/releases/download/v0.6.7/semiont_0.6.7_linux_amd64.tar.gz"
+      sha256 "199cc5c55752878b3b7879c637c0ae9fe48a9f3c0a5b7d1cc4a1054a50a3a964"
       define_method(:install) do
         bin.install "semiont"
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/The-AI-Alliance/semiont/releases/download/v0.6.6/semiont_0.6.6_linux_arm64.tar.gz"
-      sha256 "04f51a9c8ae7b350c762bb60aef9b64efa65881fc9415fc58af34dfe46508d03"
+      url "https://github.com/The-AI-Alliance/semiont/releases/download/v0.6.7/semiont_0.6.7_linux_arm64.tar.gz"
+      sha256 "4fbd81e58729c30bf96dc05720df596f229e0ea6a39d8e6056ce8b513583cbb5"
       define_method(:install) do
         bin.install "semiont"
       end
     end
+  end
+
+  def caveats
+    <<~EOS
+      Next:
+        semiont init        make a new knowledge base here, or clone one
+        semiont start       run its stack
+        semiont settings    where secrets come from and where they are kept,
+                            the container runtime, and the rest
+      A knowledge base's secrets are kept in plain files by default, which are
+      not secure: for development only. To keep every new knowledge base's
+      secrets in 1Password:
+        semiont settings secret-store --default op://<vault>
+    EOS
   end
 
   test do
